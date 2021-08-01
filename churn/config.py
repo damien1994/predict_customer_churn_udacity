@@ -1,4 +1,4 @@
-cat_columns = [
+CAT_COLUMNS = [
     'Gender',
     'Education_Level',
     'Marital_Status',
@@ -6,7 +6,7 @@ cat_columns = [
     'Card_Category'
 ]
 
-num_columns = [
+NUM_COLUMNS = [
     'Customer_Age',
     'Dependent_count',
     'Months_on_book',
@@ -22,3 +22,19 @@ num_columns = [
     'Total_Ct_Chng_Q4_Q1',
     'Avg_Utilization_Ratio'
 ]
+
+TARGET_COL = [
+    'Attrition_Flag'
+]
+
+ENCODING_TARGET = {
+    0 : 'Existing Customer',
+    1 : 'Attrited Customer'
+}
+
+PARAM_GRID = {
+    'n_estimators': [200, 500],
+    'max_features': ['auto', 'sqrt'],
+    'max_depth' : [4,5,100],
+    'criterion' :['gini', 'entropy']
+}
