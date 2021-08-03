@@ -1,6 +1,7 @@
 """
 File to store all functions for customer churn predictions
 """
+import os
 import logging as lg
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -8,6 +9,9 @@ import seaborn as sns; sns.set()
 
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import GridSearchCV
+
+from sklearn.metrics import plot_roc_curve, classification_report
+
 
 def import_data(input_path: str, num_columns: list, cat_columns: list, target_column: list) -> pd.DataFrame:
     """
@@ -25,18 +29,26 @@ def import_data(input_path: str, num_columns: list, cat_columns: list, target_co
         lg.info('File not found')
         raise err
 
-'''
-def perform_eda(df, col):
-   plt.figure(figsize=(20, 10))
-   if isinstance(col, object):
-       perform_eda_on_cat_columns()
-   else:
-       perform_eda_on_num_columns()
-'''
 
-
-#def perform_eda_on_cat_columns(df, cat_col):
-# def performn_eda_on_num_columns(df, num_col)
+def perform_eda(df: pd.DataFrame, num_cols: list, cat_cols: list, target_col: str, output_dir: str):
+    """
+    Perform exploratory data analysis for num, cat and target col
+    :param df: a pandas dataframe
+    :param num_cols: list of numerical columns
+    :param cat_cols: list of categorical columns
+    :param target_col: the target column
+    :param output_dir: path to store eda result
+    """
+    #plt.figure(figsize=(20, 10))
+    safe_creation_directory(output_dir)
+    for col in num_cols:
+        univariate_num_analysis(df, col, output_dir)
+        bivariate_num_analysis(df, col, target_col, 'poly', output_dir)
+    for col in cat_cols:
+        univariate_cat_analysis(df, col, output_dir)
+        bivariate_cat_analysis(df, col, target_col, output_dir)
+    compute_correlation_matrix(df, output_dir)
+    plot_target_distribution(df, target_col, output_dir)
 
 
 def encode_target(df: pd.DataFrame, target_name: str, target_encoding: dict) -> dict:
@@ -78,8 +90,27 @@ def perform_feature_engineering(df, target, test_size, random_state):
     return train_test_split(df.drop(target, axis=1), df[target], test_size=test_size, random_state=random_state)
 
 
+def classification_report_image(true_labels, predictions, name_model, mode, output_path):
+    """
+    produces classification report for training and testing results and stores report as image
+    in images folder
+    :param true_labels:
+    :param predictions:
+    :param name_model:
+    :output_path:
+    :return:
+    """
+    try:
+        lg.info(f'{name_model} results')
+        if mode == 'train':
+            lg.info(f'{mode} results')
+            return classification_report(true_labels, predictions)
+    except:
+        lg.info('Something went from')
+
+
 def train_models(x_train_data, x_test_data, y_train_data, model, param_grid=None, cv=None,
-                       grid_search=False, do_probabilities=False):
+                 grid_search=False, do_probabilities=False):
     try:
         if grid_search:
             gs = GridSearchCV(
@@ -91,9 +122,104 @@ def train_models(x_train_data, x_test_data, y_train_data, model, param_grid=None
             )
             fitted_model = gs.fit(x_train_data, y_train_data)
         else:
-            fitted_model= model.fit(x_train_data, y_train_data)
+            fitted_model = model.fit(x_train_data, y_train_data)
 
         predictions = fitted_model.predict_proba(x_test_data) if do_probabilities else fitted_model.predict(x_test_data)
         return fitted_model, predictions
     except:
         lg.info('complicated life')
+
+
+def plot_roc_curves(model, true_labels, predictions):
+    """
+    Plot roc curve associated to the model
+    :param model:
+    :param true_labels:
+    :param predictions:
+    :return:
+    """
+    try:
+        return plot_roc_curve(model, true_labels, predictions)
+    except:
+        lg.info('try something')
+
+
+def safe_creation_directory(path):
+    """
+    Check if directory exists, if not, create it
+    :param path: path to store eda results
+    """
+    if not os.path.isdir(path):
+        os.makedirs(path)
+        lg.info(f'folder has been created at {path}')
+    else:
+        lg.info(f'EDA images are stored in {path}')
+
+
+def univariate_cat_analysis(df: pd.DataFrame, feature: str, output_dir: str):
+    """
+    Plot distribution of discrete columns and save result
+    :param df: A pandas dataframe
+    :param feature: categorical column to analyse
+    :param output_dir: path to store result
+    """
+    cat_plot = sns.histplot(df[feature])
+    cat_plot.figure.savefig(f'{output_dir}/{feature}_histplot_distribution.png')
+
+
+def univariate_num_analysis(df: pd.DataFrame, feature: str, output_dir: str):
+    """
+    Plot distribution of continuous columns and save result
+    :param df: A pandas dataframe
+    :param feature: numerical column to analyse
+    :param output_dir: path to store result
+    """
+    num_plot = sns.displot(df[feature])
+    num_plot.savefig(f'{output_dir}/{feature}_distplot_distribution.png')
+
+
+def bivariate_cat_analysis(df, feature, target, output_dir):
+    """
+    Bivariate analysis of numerical columns with target col
+    :param df: a pandas dataframe
+    :param feature: numerical column to cross with target col
+    :param target: target column
+    :param output_dir: path to store result
+    """
+    cat_bivariate_plot = sns.catplot(x=feature, hue=target, data=df, kind='count')
+    cat_bivariate_plot.savefig(f'{output_dir}/{feature}_bivariate_cat_analysis.png')
+
+
+def bivariate_num_analysis(df, feature, target, element, output_dir):
+    """
+    Bivariate analysis of numerical columns with target col
+    :param df: a pandas dataframe
+    :param feature: numerical column to cross with target col
+    :param target: target column
+    :param element: figure style with seaborn
+    :param output_dir: path to store result
+    """
+    num_bivariate_plot = sns.histplot(df, x=feature, hue=target, element=element)
+    num_bivariate_plot.figure.savefig(f'{output_dir}/{feature}_bivariate_num_analysis.png')
+
+
+def compute_correlation_matrix(df: pd.DataFrame, output_dir: str):
+    """
+    Compute correlation matrix
+    :param df: a pandas dataframe
+    :output_dir: path to store result
+    """
+    correlation_matrix = sns.heatmap(df.corr(), annot=False, cmap='Dark2_r', linewidths=2)
+    correlation_matrix.figure.savefig(f'{output_dir}/correlation_matrix.png')
+
+
+def plot_target_distribution(df: pd.DataFrame, target: str, output_dir: str):
+    """
+    Compute target distribution
+    :param df: a pandas dataframe
+    :param target: target to analyze
+    :param output_dir: path to store result
+    """
+    plt.title('target distribution')
+    target_distribution = df[target].value_counts('normalize').plot(kind='bar')
+    plt.savefig(f'{output_dir}/target_distribution.png')

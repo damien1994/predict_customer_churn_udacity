@@ -1,3 +1,5 @@
+IMAGES_EDA_OUTPUT_DIR = 'images/eda'
+
 CAT_COLUMNS = [
     'Gender',
     'Education_Level',
@@ -28,13 +30,13 @@ TARGET_COL = [
 ]
 
 ENCODING_TARGET = {
-    0 : 'Existing Customer',
-    1 : 'Attrited Customer'
+    0: 'Existing Customer',
+    1: 'Attrited Customer'
 }
 
 PARAM_GRID = {
     'n_estimators': [200, 500],
     'max_features': ['auto', 'sqrt'],
-    'max_depth' : [4,5,100],
-    'criterion' :['gini', 'entropy']
+    'max_depth': [4, 5, 100],
+    'criterion': ['gini', 'entropy']
 }
