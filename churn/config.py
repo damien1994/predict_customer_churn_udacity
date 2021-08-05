@@ -1,4 +1,13 @@
 IMAGES_EDA_OUTPUT_DIR = 'images/eda'
+IMAGES_EDA_SUB_DIR = [
+    'univariate_num_analysis',
+    'univarite_cat_analysis',
+    'bivariate_cat_analysis',
+    'bivariate_num_analysis',
+    'target'
+]
+MODEL_OUTPUT_DIR = 'models'
+RESULTS_OUTPUT_DIR = 'results'
 
 CAT_COLUMNS = [
     'Gender',
