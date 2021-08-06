@@ -1,0 +1,14 @@
+root - INFO - object churn prediction
+root - INFO - EDA images are stored in images/eda/univariate_num_analysis
+root - INFO - EDA images are stored in images/eda/univarite_cat_analysis
+root - INFO - EDA images are stored in images/eda/bivariate_cat_analysis
+root - INFO - EDA images are stored in images/eda/bivariate_num_analysis
+root - INFO - EDA images are stored in images/eda/target
+root - INFO - EDA images are stored in models
+root - INFO - EDA images are stored in models
+root - INFO - EDA images are stored in results
+root - INFO - Compute classification report
+root - INFO - Compute roc curve
+root - INFO - Compute Shapley values
+root - INFO - Compute feature importance
+root - INFO - EDA images are stored in results
