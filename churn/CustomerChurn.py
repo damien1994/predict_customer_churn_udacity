@@ -48,8 +48,8 @@ class CustomerChurn(DataExploration, EncoderHelper, EvaluateModel):
                                                          cv=5, grid_search=True, do_probabilities=False,
                                                          output_dir=MODEL_OUTPUT_DIR)
 
-        #self.logger.info("Perform model evaluation")
-        self.evaluate_model(fitted_model, X_train, X_test, y_test, predictions, RESULTS_OUTPUT_DIR)
+            #self.logger.info("Perform model evaluation")
+            self.evaluate_model(fitted_model, X_train, X_test, y_test, predictions, RESULTS_OUTPUT_DIR)
 
         # stored all errors
         # ValueError
