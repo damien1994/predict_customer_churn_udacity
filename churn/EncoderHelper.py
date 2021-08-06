@@ -16,7 +16,6 @@ class EncoderHelper:
 
     def __init__(self, cat_cols: list, target_encoding_dict: dict):
         """
-        :param df: a pandas dataframe
         :param cat_cols: list of categorical columns
         :param target_encoding_dict: dict that shows how to encode the target value
         """
@@ -36,11 +35,12 @@ class EncoderHelper:
         """
         try:
             dataframe = self.encode_target(df, target_name, new_target_name, self.target_encoding_dict)
+            logging.info(f'SUCCES - target has been perfectly encoded')
             for col in self.cat_cols:
                 self.encoder_cat_features(dataframe, col)
             return dataframe
-        except:
-            self.logger.info("Something went wrong")
+        except (KeyError, AttributeError) as err:
+            self.logger.info(f'ERROR - during encoding helper : {err}')
 
     def encode_target(self, df: pd.DataFrame, target_name: str, new_target_name: str,
                       target_encoding_dict: dict) -> pd.DataFrame:
@@ -56,9 +56,8 @@ class EncoderHelper:
             encoding_dict = self.compute_encoding_target_dict(df, target_name, target_encoding_dict)
             df[new_target_name] = np.select(encoding_dict.values(), encoding_dict.keys(), default=1)
             return df.drop(target_name, axis=1)
-        except KeyError as error:
-            self.logger.info('something went wrong')
-            raise error
+        except (KeyError, AttributeError, ) as err:
+            self.logger.info(f'ERROR - during target encoding : {err}')
 
     @staticmethod
     def encoder_cat_features(df: pd.DataFrame, feature: str) -> pd.DataFrame:
@@ -71,9 +70,10 @@ class EncoderHelper:
         try:
             feature_groups = df.groupby(feature).mean()['Churn']
             df['{0}_Churn'.format(feature)] = df[feature].map(feature_groups)
+            logging.info(f'SUCCESS - {feature} has been encoded')
             return df
-        except:
-            logging.info("Something went wrong")
+        except (KeyError, AttributeError) as err:
+            logging.info(f'ERROR - during categorical columns encoding : {err}')
 
     @staticmethod
     def compute_encoding_target_dict(df: pd.DataFrame, target_name: str, target_encoding_dict: dict) -> dict:
@@ -84,5 +84,8 @@ class EncoderHelper:
         :param target_encoding_dict: how to encode the target value
         :return: a dictionary with <new_encode : value to be encoded>
         """
-        for key, value in target_encoding_dict.items():
-            return {key: df[target_name] == value}
+        try:
+            for key, value in target_encoding_dict.items():
+                return {key: df[target_name] == value}
+        except (KeyError, AttributeError) as err:
+            logging.info(f'ERROR - during compute of target encoding : {err}')
