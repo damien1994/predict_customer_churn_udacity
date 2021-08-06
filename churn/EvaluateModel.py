@@ -61,6 +61,7 @@ class EvaluateModel(BaseLogger):
         """
         Compute classification report thanks to scikit learn function.
         Returns some metrics like precision, recall, accuracy, ...
+        and save it into a csv file
         :param true_labels: true values to compare with predictions
         :param predictions: predictions made with the model trained
         :param model_name: name of the model used like 'LogisticRegression' or 'RandomForest'
@@ -73,7 +74,7 @@ class EvaluateModel(BaseLogger):
     @staticmethod
     def store_model_roc_curve(model_fitted, test_data, true_labels, model_name, output_dir):
         """
-        Compute roc curve
+        Compute roc curve and save it into a png file
         :param model_fitted: the model fitted
         :param test_data: test data that will allow us to make the predictions
         :param true_labels:  true values to compare with predictions
@@ -89,7 +90,13 @@ class EvaluateModel(BaseLogger):
     @staticmethod
     def compute_shapley_values(model_fitted, test_data, output_dir, model_name, train_data=None):
         """
-        TO DO
+        Compute shapley values and save them into a png file
+        :param model_fitted: the model fitted
+        :param test_data: test data that will allow us to make the predictions
+        :param output_dir: directory where to store result
+        :param model_name: name of the model used like 'LogisticRegression' or 'RandomForest'
+        :param train_data: data on which model has been trained
+        :returns a png file with shapley values computed
         """
         explainer = None
         plt.figure(figsize=(20, 10))
@@ -108,9 +115,15 @@ class EvaluateModel(BaseLogger):
         plt.savefig(f'{output_dir}/{type(model_fitted).__name__}_shapley_values.png', bbox_inches='tight')
 
     @staticmethod
-    def compute_features_importances(feature_names, coefficients, model_name, output_dir):
+    def compute_features_importances(feature_names: list, coefficients: np.array, model_name: str, output_dir: str):
         """
-        TO DO
+        Compute features importances and save them into a png file
+        :param feature_names: column names used for training
+        :param coefficients: coefficients of each column used in training which corresponds to their weight
+        in the prediction
+        :param model_name: name of the model used like 'LogisticRegression' or 'RandomForest'
+        :param output_dir: directory where to store result
+        :returns a png file with features importances computed
         """
         plt.figure(figsize=(20, 10))
         safe_creation_directory(output_dir)
