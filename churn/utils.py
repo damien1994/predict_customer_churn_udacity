@@ -31,7 +31,7 @@ def import_data(input_path: str, num_columns: list, cat_columns: list, target_co
         dataframe = pd.read_csv(input_path)
         return dataframe[num_columns + cat_columns + target_column]
     except FileNotFoundError as err:
-        lg.info(f'ERROR during import data: {err}')
+        lg.info(f'ERROR - during import data: {err}')
 
 
 def perform_feature_engineering(df: pd.DataFrame, target: str, test_size: float, random_state: int):
@@ -48,7 +48,7 @@ def perform_feature_engineering(df: pd.DataFrame, target: str, test_size: float,
         return train_test_split(df.drop(target, axis=1), df[target], test_size=test_size, random_state=random_state), \
             df.drop(target, axis=1).columns
     except KeyError as error:
-        lg.info(f'ERROR during feature engineering: {error}')
+        lg.info(f'ERROR - during feature engineering: {error}')
 
 
 def train_models(x_train_data: pd.DataFrame, x_test_data: pd.DataFrame, y_train_data: pd.Series, model,
@@ -80,11 +80,11 @@ def train_models(x_train_data: pd.DataFrame, x_test_data: pd.DataFrame, y_train_
         else:
             fitted_model = model.fit(x_train_data, y_train_data)
 
-        lg.info(f'SUCESS: model has been fitted')
+        lg.info(f'SUCCESS - model has been fitted')
 
         if output_dir:
             save_model(fitted_model, output_dir)
-            lg.info(f'SUCESS: Model has been saved to {output_dir}')
+            lg.info(f'SUCCESS - Model has been saved to {output_dir}')
 
         predictions = fitted_model.predict_proba(x_test_data) if do_probabilities else fitted_model.predict(x_test_data)
         return fitted_model, predictions
@@ -100,11 +100,11 @@ def safe_creation_directory(path):
     try:
         if not os.path.isdir(path):
             os.makedirs(path)
-            lg.info(f'folder has been created at {path}')
+            lg.info(f'SUCCESS - folder has been created at {path}')
         else:
-            lg.info(f'EDA images are stored in {path}')
+            lg.info(f'SUCCESS - EDA images are stored in {path}')
     except (OSError, SyntaxError) as err:
-        lg.info(f'ERROR during directory creation: {err}')
+        lg.info(f'ERROR - during directory creation: {err}')
 
 
 def save_model(model, output_dir: str):
@@ -118,7 +118,7 @@ def save_model(model, output_dir: str):
         safe_creation_directory(output_dir)
         return joblib.dump(model, f'{output_dir}/{type(model).__name__}.pkl')
     except Exception as err:
-        lg.info(f'ERROR during model dump: {err}')
+        lg.info(f'ERROR - during model dump: {err}')
 
 
 def load_model(input_path: str):
@@ -130,4 +130,4 @@ def load_model(input_path: str):
     try:
         return joblib.load(input_path)
     except (FileNotFoundError, MemoryError) as err:
-        lg.info(f'ERROR during model loading: {err}')
+        lg.info(f'ERROR - during model loading: {err}')

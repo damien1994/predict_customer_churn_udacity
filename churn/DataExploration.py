@@ -28,18 +28,22 @@ class DataExploration:
            :param output_dir: path to store eda result
            :param sub_dir: sub directories split for univariate/bivariate and num/cat analysis
            """
-        plt.figure(figsize=(20, 10))
-        for subdir in sub_dir:
-            path = os.path.join(output_dir, subdir)
-            safe_creation_directory(path)
-        for col in self.num_cols:
-            self.univariate_num_analysis(df, col, output_dir)
-            self.bivariate_num_analysis(df, col, self.target_col[0], 'poly', output_dir)
-        for col in self.cat_cols:
-            self.univariate_cat_analysis(df, col, output_dir)
-            self.bivariate_cat_analysis(df, col, self.target_col[0], output_dir)
-        self.compute_correlation_matrix(df, output_dir)
-        self.plot_target_distribution(df, self.target_col[0], output_dir)
+        try:
+            plt.figure(figsize=(20, 10))
+            for subdir in sub_dir:
+                path = os.path.join(output_dir, subdir)
+                safe_creation_directory(path)
+            for col in self.num_cols:
+                self.univariate_num_analysis(df, col, output_dir)
+                self.bivariate_num_analysis(df, col, self.target_col[0], 'poly', output_dir)
+            for col in self.cat_cols:
+                self.univariate_cat_analysis(df, col, output_dir)
+                self.bivariate_cat_analysis(df, col, self.target_col[0], output_dir)
+            self.compute_correlation_matrix(df, output_dir)
+            self.plot_target_distribution(df, self.target_col[0], output_dir)
+            lg.info(f'SUCCESS - EDA has been done entirely !')
+        except Exception as err:
+            lg.info(f'ERROR - A step has failed during EDA : {err}')
 
     @staticmethod
     def univariate_cat_analysis(df: pd.DataFrame, feature: str, output_dir: str):
@@ -49,9 +53,13 @@ class DataExploration:
         :param feature: categorical column to analyse
         :param output_dir: path to store result
         """
-        cat_plot = sns.histplot(df[feature])
-        cat_plot.figure.savefig(f'{output_dir}/univarite_cat_analysis/{feature}_histplot_distribution.png',
-                                bbox_inches='tight')
+        try:
+            cat_plot = sns.histplot(df[feature])
+            cat_plot.figure.savefig(f'{output_dir}/univarite_cat_analysis/{feature}_histplot_distribution.png',
+                                    bbox_inches='tight')
+            lg.info(f'SUCCESS - categorical univariate analysis on {feature} has been saved')
+        except (AttributeError, NameError, IsADirectoryError, FileNotFoundError, IndexError) as err:
+            lg.info(f'ERROR - during univariate analysis on categorical {feature}: {err}')
 
     @staticmethod
     def univariate_num_analysis(df: pd.DataFrame, feature: str, output_dir: str):
@@ -61,9 +69,13 @@ class DataExploration:
         :param feature: numerical column to analyse
         :param output_dir: path to store result
         """
-        num_plot = sns.displot(df[feature])
-        num_plot.savefig(f'{output_dir}/univariate_num_analysis/{feature}_distplot_distribution.png',
-                         bbox_inches='tight')
+        try:
+            num_plot = sns.displot(df[feature])
+            num_plot.savefig(f'{output_dir}/univariate_num_analysis/{feature}_distplot_distribution.png',
+                             bbox_inches='tight')
+            lg.info(f'SUCCESS - numerical univariate analysis on {feature} has been saved')
+        except (AttributeError, NameError, IsADirectoryError, FileNotFoundError, IndexError) as err:
+            lg.info(f'ERROR - during univariate analysis on numerical {feature}: {err}')
 
     @staticmethod
     def bivariate_cat_analysis(df, feature, target, output_dir):
@@ -74,9 +86,13 @@ class DataExploration:
         :param target: target column
         :param output_dir: path to store result
         """
-        cat_bivariate_plot = sns.catplot(x=feature, hue=target, data=df, kind='count')
-        cat_bivariate_plot.savefig(f'{output_dir}/bivariate_cat_analysis/{feature}_bivariate_cat_analysis.png',
-                                   bbox_inches='tight')
+        try:
+            cat_bivariate_plot = sns.catplot(x=feature, hue=target, data=df, kind='count')
+            cat_bivariate_plot.savefig(f'{output_dir}/bivariate_cat_analysis/{feature}_bivariate_cat_analysis.png',
+                                       bbox_inches='tight')
+            lg.info(f'SUCCESS - categorical bivariate analysis on {feature} and {target} has been saved')
+        except (AttributeError, NameError, IsADirectoryError, FileNotFoundError, IndexError) as err:
+            lg.info(f'ERROR - during bivariate analysis on categorical {feature} and {target}: {err}')
 
     @staticmethod
     def bivariate_num_analysis(df, feature, target, element, output_dir):
@@ -88,9 +104,13 @@ class DataExploration:
         :param element: figure style with seaborn
         :param output_dir: path to store result
         """
-        num_bivariate_plot = sns.histplot(df, x=feature, hue=target, element=element)
-        num_bivariate_plot.figure.savefig(f'{output_dir}/bivariate_num_analysis/{feature}_bivariate_num_analysis.png',
-                                          bbox_inches='tight')
+        try:
+            num_bivariate_plot = sns.histplot(df, x=feature, hue=target, element=element)
+            num_bivariate_plot.figure.savefig(f'{output_dir}/bivariate_num_analysis/'
+                                              f'{feature}_bivariate_num_analysis.png', bbox_inches='tight')
+            lg.info(f'SUCCESS - numerical bivariate analysis on {feature} and {target} has been saved')
+        except (AttributeError, NameError, IsADirectoryError, FileNotFoundError, IndexError) as err:
+            lg.info(f'ERROR - during bivariate analysis on numerical {feature} and {target}: {err}')
 
     @staticmethod
     def compute_correlation_matrix(df: pd.DataFrame, output_dir: str):
@@ -99,9 +119,13 @@ class DataExploration:
         :param df: a pandas dataframe
         :param output_dir: path to store result
         """
-        correlation_matrix = sns.heatmap(df.corr(), annot=False, cmap='Dark2_r', linewidths=2)
-        correlation_matrix.figure.savefig(f'{output_dir}/bivariate_num_analysis/correlation_matrix.png',
-                                          bbox_inches='tight')
+        try:
+            correlation_matrix = sns.heatmap(df.corr(), annot=False, cmap='Dark2_r', linewidths=2)
+            correlation_matrix.figure.savefig(f'{output_dir}/bivariate_num_analysis/correlation_matrix.png',
+                                              bbox_inches='tight')
+            lg.info(f'SUCCESS - correlation matrix analysis has been saved')
+        except (AttributeError, NameError, IsADirectoryError, FileNotFoundError, IndexError) as err:
+            lg.info(f'ERROR - during correlation matrix analysis : {err}')
 
     @staticmethod
     def plot_target_distribution(df: pd.DataFrame, target: str, output_dir: str):
@@ -111,6 +135,10 @@ class DataExploration:
         :param target: target to analyze
         :param output_dir: path to store result
         """
-        plt.title('target distribution')
-        target_distribution = df[target].value_counts('normalize').plot(kind='bar')
-        plt.savefig(f'{output_dir}/target/target_distribution.png', bbox_inches='tight')
+        try:
+            plt.title('target distribution')
+            target_distribution = df[target].value_counts('normalize').plot(kind='bar')
+            plt.savefig(f'{output_dir}/target/target_distribution.png', bbox_inches='tight')
+            lg.info(f'SUCCESS - target distribution plot has been saved')
+        except (AttributeError, NameError, IsADirectoryError, FileNotFoundError, IndexError) as err:
+            lg.info(f'ERROR - during target distribution analysis : {err}')
