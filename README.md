@@ -10,20 +10,12 @@ Your project description here.
 How do you run your files? What should happen when you run your files?
 
 ## TO DO
-- refacto utils into python classes (quite done):
-
--> deal with inheritance between logger class and its children
-
--> deal with path results  
-
--> add parser to main script
-- try / except blocks
+- refacto utils into python classes : done
+- try / except blocks : done
 - unit tests with pytest
-- name model storage for gridsearch to rework
-- comments into function
-- docstring for each file
-- lint 
-- makefile
-- docker
+- lint : add to makefile
+- makefile : add linter and test to makefile
+- docker : optional (personal ambition)
+- github actions : optional (personal ambition)
 
 
