@@ -64,7 +64,7 @@ class EncoderHelper:
         :return: a pandas dataframe with the target encoding to the feature
         """
         try:
-            feature_groups = df.groupby(feature).mean()['Churn']
+            feature_groups = round(df.groupby(feature).mean()['Churn'], 2)
             df['{0}_Churn'.format(feature)] = df[feature].map(feature_groups)
             logging.info(f'SUCCESS - {feature} has been encoded')
             return df

@@ -65,7 +65,7 @@ def perform_feature_engineering(df: pd.DataFrame, target: str, test_size: float,
     try:
         df = df.select_dtypes(exclude=['object'])
         return train_test_split(df.drop(target, axis=1), df[target], test_size=test_size, random_state=random_state), \
-               df.drop(target, axis=1).columns
+            df.drop(target, axis=1).columns
     except KeyError as error:
         logging.info(f'ERROR - during feature engineering: {error}')
 
@@ -99,7 +99,7 @@ def train_models(x_train_data: pd.DataFrame, x_test_data: pd.DataFrame, y_train_
         else:
             fitted_model = model.fit(x_train_data, y_train_data)
 
-        logging.info(f'SUCCESS - model has been fitted')
+        logging.info(f'SUCCESS - model has been fitted : {fitted_model}')
 
         if output_dir:
             full_ouput_dir = os.path.join(CURRENT_DIR, output_dir)

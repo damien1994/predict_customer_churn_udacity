@@ -55,7 +55,7 @@ class EvaluateModel:
             self.store_model_roc_curve(model_fitted, test_data, true_labels, model_name, full_output_dir)
             logging.info("SUCCESS - Compute roc curve")
             self.compute_shapley_values(model_fitted, test_data, full_output_dir, model_name, train_data)
-            logging.info("SUCESS - Compute Shapley values")
+            logging.info("SUCCESS - Compute Shapley values")
             self.compute_features_importances(train_data.columns, coefficients, model_name, full_output_dir)
             logging.info("SUCCESS - Compute feature importance")
         except (AssertionError, AttributeError, IsADirectoryError, NotADirectoryError, SyntaxError, ValueError) as err:
