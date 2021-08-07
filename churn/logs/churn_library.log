@@ -1,14 +1,89 @@
-root - INFO - object churn prediction
-root - INFO - EDA images are stored in images/eda/univariate_num_analysis
-root - INFO - EDA images are stored in images/eda/univarite_cat_analysis
-root - INFO - EDA images are stored in images/eda/bivariate_cat_analysis
-root - INFO - EDA images are stored in images/eda/bivariate_num_analysis
-root - INFO - EDA images are stored in images/eda/target
-root - INFO - EDA images are stored in models
-root - INFO - EDA images are stored in models
-root - INFO - EDA images are stored in results
-root - INFO - Compute classification report
-root - INFO - Compute roc curve
-root - INFO - Compute Shapley values
-root - INFO - Compute feature importance
-root - INFO - EDA images are stored in results
+root - INFO - SUCCESS - Global data importation has been performed
+root - INFO - SUCCESS - EDA images are stored in /Users/damien/Documents/predict_customer_churn_udacity/churn/images/eda/univariate_num_analysis
+root - INFO - SUCCESS - EDA images are stored in /Users/damien/Documents/predict_customer_churn_udacity/churn/images/eda/univarite_cat_analysis
+root - INFO - SUCCESS - EDA images are stored in /Users/damien/Documents/predict_customer_churn_udacity/churn/images/eda/bivariate_cat_analysis
+root - INFO - SUCCESS - EDA images are stored in /Users/damien/Documents/predict_customer_churn_udacity/churn/images/eda/bivariate_num_analysis
+root - INFO - SUCCESS - EDA images are stored in /Users/damien/Documents/predict_customer_churn_udacity/churn/images/eda/target
+root - INFO - ERROR - during univariate analysis on numerical Customer_Age: [Errno 2] No such file or directory: 'images/eda/univariate_num_analysis/Customer_Age_distplot_distribution.png'
+root - INFO - ERROR - during bivariate analysis on numerical Customer_Age and Attrition_Flag: [Errno 2] No such file or directory: 'images/eda/bivariate_num_analysis/Customer_Age_bivariate_num_analysis.png'
+root - INFO - ERROR - during univariate analysis on numerical Dependent_count: [Errno 2] No such file or directory: 'images/eda/univariate_num_analysis/Dependent_count_distplot_distribution.png'
+root - INFO - ERROR - during bivariate analysis on numerical Dependent_count and Attrition_Flag: [Errno 2] No such file or directory: 'images/eda/bivariate_num_analysis/Dependent_count_bivariate_num_analysis.png'
+root - INFO - ERROR - during univariate analysis on numerical Months_on_book: [Errno 2] No such file or directory: 'images/eda/univariate_num_analysis/Months_on_book_distplot_distribution.png'
+root - INFO - ERROR - during bivariate analysis on numerical Months_on_book and Attrition_Flag: [Errno 2] No such file or directory: 'images/eda/bivariate_num_analysis/Months_on_book_bivariate_num_analysis.png'
+root - INFO - ERROR - during univariate analysis on numerical Total_Relationship_Count: [Errno 2] No such file or directory: 'images/eda/univariate_num_analysis/Total_Relationship_Count_distplot_distribution.png'
+root - INFO - ERROR - during bivariate analysis on numerical Total_Relationship_Count and Attrition_Flag: [Errno 2] No such file or directory: 'images/eda/bivariate_num_analysis/Total_Relationship_Count_bivariate_num_analysis.png'
+root - INFO - ERROR - during univariate analysis on numerical Months_Inactive_12_mon: [Errno 2] No such file or directory: 'images/eda/univariate_num_analysis/Months_Inactive_12_mon_distplot_distribution.png'
+root - INFO - ERROR - during bivariate analysis on numerical Months_Inactive_12_mon and Attrition_Flag: [Errno 2] No such file or directory: 'images/eda/bivariate_num_analysis/Months_Inactive_12_mon_bivariate_num_analysis.png'
+root - INFO - ERROR - during univariate analysis on numerical Contacts_Count_12_mon: [Errno 2] No such file or directory: 'images/eda/univariate_num_analysis/Contacts_Count_12_mon_distplot_distribution.png'
+root - INFO - ERROR - during bivariate analysis on numerical Contacts_Count_12_mon and Attrition_Flag: [Errno 2] No such file or directory: 'images/eda/bivariate_num_analysis/Contacts_Count_12_mon_bivariate_num_analysis.png'
+root - INFO - ERROR - during univariate analysis on numerical Credit_Limit: [Errno 2] No such file or directory: 'images/eda/univariate_num_analysis/Credit_Limit_distplot_distribution.png'
+root - INFO - ERROR - during bivariate analysis on numerical Credit_Limit and Attrition_Flag: [Errno 2] No such file or directory: 'images/eda/bivariate_num_analysis/Credit_Limit_bivariate_num_analysis.png'
+root - INFO - ERROR - during univariate analysis on numerical Total_Revolving_Bal: [Errno 2] No such file or directory: 'images/eda/univariate_num_analysis/Total_Revolving_Bal_distplot_distribution.png'
+root - INFO - ERROR - during bivariate analysis on numerical Total_Revolving_Bal and Attrition_Flag: [Errno 2] No such file or directory: 'images/eda/bivariate_num_analysis/Total_Revolving_Bal_bivariate_num_analysis.png'
+root - INFO - ERROR - during univariate analysis on numerical Avg_Open_To_Buy: [Errno 2] No such file or directory: 'images/eda/univariate_num_analysis/Avg_Open_To_Buy_distplot_distribution.png'
+root - INFO - ERROR - during bivariate analysis on numerical Avg_Open_To_Buy and Attrition_Flag: [Errno 2] No such file or directory: 'images/eda/bivariate_num_analysis/Avg_Open_To_Buy_bivariate_num_analysis.png'
+root - INFO - ERROR - during univariate analysis on numerical Total_Amt_Chng_Q4_Q1: [Errno 2] No such file or directory: 'images/eda/univariate_num_analysis/Total_Amt_Chng_Q4_Q1_distplot_distribution.png'
+root - INFO - ERROR - during bivariate analysis on numerical Total_Amt_Chng_Q4_Q1 and Attrition_Flag: [Errno 2] No such file or directory: 'images/eda/bivariate_num_analysis/Total_Amt_Chng_Q4_Q1_bivariate_num_analysis.png'
+root - INFO - ERROR - during univariate analysis on numerical Total_Trans_Amt: [Errno 2] No such file or directory: 'images/eda/univariate_num_analysis/Total_Trans_Amt_distplot_distribution.png'
+root - INFO - ERROR - during bivariate analysis on numerical Total_Trans_Amt and Attrition_Flag: [Errno 2] No such file or directory: 'images/eda/bivariate_num_analysis/Total_Trans_Amt_bivariate_num_analysis.png'
+root - INFO - ERROR - during univariate analysis on numerical Total_Trans_Ct: [Errno 2] No such file or directory: 'images/eda/univariate_num_analysis/Total_Trans_Ct_distplot_distribution.png'
+root - INFO - ERROR - during bivariate analysis on numerical Total_Trans_Ct and Attrition_Flag: [Errno 2] No such file or directory: 'images/eda/bivariate_num_analysis/Total_Trans_Ct_bivariate_num_analysis.png'
+root - INFO - ERROR - during univariate analysis on numerical Total_Ct_Chng_Q4_Q1: [Errno 2] No such file or directory: 'images/eda/univariate_num_analysis/Total_Ct_Chng_Q4_Q1_distplot_distribution.png'
+root - INFO - ERROR - during bivariate analysis on numerical Total_Ct_Chng_Q4_Q1 and Attrition_Flag: [Errno 2] No such file or directory: 'images/eda/bivariate_num_analysis/Total_Ct_Chng_Q4_Q1_bivariate_num_analysis.png'
+root - INFO - ERROR - during univariate analysis on numerical Avg_Utilization_Ratio: [Errno 2] No such file or directory: 'images/eda/univariate_num_analysis/Avg_Utilization_Ratio_distplot_distribution.png'
+root - INFO - ERROR - during bivariate analysis on numerical Avg_Utilization_Ratio and Attrition_Flag: [Errno 2] No such file or directory: 'images/eda/bivariate_num_analysis/Avg_Utilization_Ratio_bivariate_num_analysis.png'
+root - INFO - ERROR - during univariate analysis on categorical Gender: [Errno 2] No such file or directory: 'images/eda/univarite_cat_analysis/Gender_histplot_distribution.png'
+root - INFO - ERROR - during bivariate analysis on categorical Gender and Attrition_Flag: [Errno 2] No such file or directory: 'images/eda/bivariate_cat_analysis/Gender_bivariate_cat_analysis.png'
+root - INFO - ERROR - during univariate analysis on categorical Education_Level: [Errno 2] No such file or directory: 'images/eda/univarite_cat_analysis/Education_Level_histplot_distribution.png'
+root - INFO - ERROR - during bivariate analysis on categorical Education_Level and Attrition_Flag: [Errno 2] No such file or directory: 'images/eda/bivariate_cat_analysis/Education_Level_bivariate_cat_analysis.png'
+root - INFO - ERROR - during univariate analysis on categorical Marital_Status: [Errno 2] No such file or directory: 'images/eda/univarite_cat_analysis/Marital_Status_histplot_distribution.png'
+root - INFO - ERROR - during bivariate analysis on categorical Marital_Status and Attrition_Flag: [Errno 2] No such file or directory: 'images/eda/bivariate_cat_analysis/Marital_Status_bivariate_cat_analysis.png'
+root - INFO - ERROR - during univariate analysis on categorical Income_Category: [Errno 2] No such file or directory: 'images/eda/univarite_cat_analysis/Income_Category_histplot_distribution.png'
+root - INFO - ERROR - during bivariate analysis on categorical Income_Category and Attrition_Flag: [Errno 2] No such file or directory: 'images/eda/bivariate_cat_analysis/Income_Category_bivariate_cat_analysis.png'
+root - INFO - ERROR - during univariate analysis on categorical Card_Category: [Errno 2] No such file or directory: 'images/eda/univarite_cat_analysis/Card_Category_histplot_distribution.png'
+root - INFO - ERROR - during bivariate analysis on categorical Card_Category and Attrition_Flag: [Errno 2] No such file or directory: 'images/eda/bivariate_cat_analysis/Card_Category_bivariate_cat_analysis.png'
+root - INFO - ERROR - during correlation matrix analysis : [Errno 2] No such file or directory: 'images/eda/bivariate_num_analysis/correlation_matrix.png'
+root - INFO - ERROR - during target distribution analysis : [Errno 2] No such file or directory: 'images/eda/target/target_distribution.png'
+root - INFO - SUCCESS - EDA has been done entirely !
+root - INFO - SUCCESS - Global EDA step has been performed
+root - INFO - SUCCES - target has been perfectly encoded
+root - INFO - SUCCESS - Gender has been encoded
+root - INFO - SUCCESS - Education_Level has been encoded
+root - INFO - SUCCESS - Marital_Status has been encoded
+root - INFO - SUCCESS - Income_Category has been encoded
+root - INFO - SUCCESS - Card_Category has been encoded
+root - INFO - SUCCESS - Global encoder helper step has been performed
+root - INFO - SUCCESS - Global feature engineering step has been performed
+root - INFO - SUCCESS - model has been fitted
+root - INFO - SUCCESS - EDA images are stored in /Users/damien/Documents/predict_customer_churn_udacity/churn/models
+root - INFO - ERROR - during model dump: [Errno 2] No such file or directory: 'models/LogisticRegression.pkl'
+root - INFO - SUCCESS - Model has been saved to models
+root - INFO - SUCCESS - Global model training step has been performed
+root - INFO - SUCCESS - EDA images are stored in /Users/damien/Documents/predict_customer_churn_udacity/churn/results
+root - INFO - ERROR - during classification report compute : [Errno 2] No such file or directory: 'results/LogisticRegression_classification_report.csv'
+root - INFO - SUCCESS - Compute classification report
+root - INFO - ERROR - during model roc curve compute : [Errno 2] No such file or directory: 'results/LogisticRegression_roc_curve.png'
+root - INFO - SUCCESS - Compute roc curve
+root - INFO - ERROR - during shapley values compute: [Errno 2] No such file or directory: 'results/LogisticRegression_shapley_values.png'
+root - INFO - SUCESS - Compute Shapley values
+root - INFO - SUCCESS - EDA images are stored in /Users/damien/Documents/predict_customer_churn_udacity/churn/results
+root - INFO - ERROR - during features importance compute: [Errno 2] No such file or directory: 'results/LogisticRegression_features_importances.png'
+root - INFO - SUCCESS - Compute feature importance
+root - INFO - SUCCESS - Global model evaluation step has been performed
+root - INFO - SUCCESS - model has been fitted
+root - INFO - SUCCESS - EDA images are stored in /Users/damien/Documents/predict_customer_churn_udacity/churn/models
+root - INFO - ERROR - during model dump: [Errno 2] No such file or directory: 'models/GridSearchCV.pkl'
+root - INFO - SUCCESS - Model has been saved to models
+root - INFO - SUCCESS - Global model training step has been performed
+root - INFO - SUCCESS - EDA images are stored in /Users/damien/Documents/predict_customer_churn_udacity/churn/results
+root - INFO - ERROR - during classification report compute : [Errno 2] No such file or directory: 'results/RandomForestClassifier_classification_report.csv'
+root - INFO - SUCCESS - Compute classification report
+root - INFO - ERROR - during model roc curve compute : [Errno 2] No such file or directory: 'results/RandomForestClassifier_roc_curve.png'
+root - INFO - SUCCESS - Compute roc curve
+root - INFO - ERROR - during shapley values compute: [Errno 2] No such file or directory: 'results/RandomForestClassifier_shapley_values.png'
+root - INFO - SUCESS - Compute Shapley values
+root - INFO - SUCCESS - EDA images are stored in /Users/damien/Documents/predict_customer_churn_udacity/churn/results
+root - INFO - ERROR - during features importance compute: [Errno 2] No such file or directory: 'results/RandomForestClassifier_features_importances.png'
+root - INFO - SUCCESS - Compute feature importance
+root - INFO - SUCCESS - Global model evaluation step has been performed
+root - INFO - SUCCESS - All script has been executed with success ! Congratulations !

@@ -1,3 +1,9 @@
+"""
+Python script where are stored constants
+"""
+import os
+
+CURRENT_DIR = os.path.dirname(__file__)
 IMAGES_EDA_OUTPUT_DIR = 'images/eda'
 IMAGES_EDA_SUB_DIR = [
     'univariate_num_analysis',

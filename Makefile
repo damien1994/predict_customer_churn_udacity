@@ -1,3 +1,5 @@
+INPUT_FILE='churn/data/bank_data.csv'
+
 clean:
 	rm -Rf *.egg-info
 	rm -Rf build
@@ -9,4 +11,5 @@ build: clean
 	python3 setup.py sdist
 
 run: build
-	python3 -m churn.main
+	python3 -m churn.main \
+	--input_file $(INPUT_FILE)

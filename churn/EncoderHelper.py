@@ -1,11 +1,10 @@
 """
 Python class for encoding categorical columns
 """
-import logging
 import pandas as pd
 import numpy as np
 
-from churn.Logger import BaseLogger
+from churn.base_logger import logging
 
 
 class EncoderHelper:
@@ -19,9 +18,6 @@ class EncoderHelper:
         :param cat_cols: list of categorical columns
         :param target_encoding_dict: dict that shows how to encode the target value
         """
-        #super(EncoderHelper, self).__init__()
-        #super(BaseLogger, self).__init__()
-        #super().__init__()
         self.cat_cols = cat_cols
         self.target_encoding_dict = target_encoding_dict
 
@@ -40,7 +36,7 @@ class EncoderHelper:
                 self.encoder_cat_features(dataframe, col)
             return dataframe
         except (KeyError, AttributeError) as err:
-            self.logger.info(f'ERROR - during encoding helper : {err}')
+            logging.info(f'ERROR - during encoding helper : {err}')
 
     def encode_target(self, df: pd.DataFrame, target_name: str, new_target_name: str,
                       target_encoding_dict: dict) -> pd.DataFrame:
@@ -57,7 +53,7 @@ class EncoderHelper:
             df[new_target_name] = np.select(encoding_dict.values(), encoding_dict.keys(), default=1)
             return df.drop(target_name, axis=1)
         except (KeyError, AttributeError, ) as err:
-            self.logger.info(f'ERROR - during target encoding : {err}')
+            logging.info(f'ERROR - during target encoding : {err}')
 
     @staticmethod
     def encoder_cat_features(df: pd.DataFrame, feature: str) -> pd.DataFrame:
