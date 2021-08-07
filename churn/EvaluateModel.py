@@ -1,7 +1,7 @@
 """
 Python class for evaluating model performance
 """
-import logging
+import os
 import shap
 import numpy as np
 import pandas as pd
@@ -11,6 +11,7 @@ import seaborn as sns
 from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import plot_roc_curve, classification_report
 
+from churn.config import CURRENT_DIR
 from churn.utils import safe_creation_directory
 from churn.base_logger import logging
 
@@ -48,13 +49,14 @@ class EvaluateModel:
                 model_name = type(model_fitted).__name__
                 coefficients = model_fitted.coef_[0]
             safe_creation_directory(output_dir)
-            self.store_classification_report(true_labels, predictions, model_name, output_dir)
+            full_output_dir = os.path.join(CURRENT_DIR, output_dir)
+            self.store_classification_report(true_labels, predictions, model_name, full_output_dir)
             logging.info("SUCCESS - Compute classification report")
-            self.store_model_roc_curve(model_fitted, test_data, true_labels, model_name, output_dir)
+            self.store_model_roc_curve(model_fitted, test_data, true_labels, model_name, full_output_dir)
             logging.info("SUCCESS - Compute roc curve")
-            self.compute_shapley_values(model_fitted, test_data, output_dir, model_name, train_data)
+            self.compute_shapley_values(model_fitted, test_data, full_output_dir, model_name, train_data)
             logging.info("SUCESS - Compute Shapley values")
-            self.compute_features_importances(train_data.columns, coefficients, model_name, output_dir)
+            self.compute_features_importances(train_data.columns, coefficients, model_name, full_output_dir)
             logging.info("SUCCESS - Compute feature importance")
         except (AssertionError, AttributeError, IsADirectoryError, NotADirectoryError, SyntaxError, ValueError) as err:
             logging.info(f'ERROR - during model evaluation : {err}')

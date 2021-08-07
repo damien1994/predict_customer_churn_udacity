@@ -15,6 +15,7 @@ How do you run your files? What should happen when you run your files?
 - unit tests with pytest
 - lint : add to makefile
 - makefile : add linter and test to makefile
+- deal with option between retrain model or load pkl
 - docker : optional (personal ambition)
 - github actions : optional (personal ambition)
 

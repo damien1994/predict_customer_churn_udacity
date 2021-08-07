@@ -102,8 +102,9 @@ def train_models(x_train_data: pd.DataFrame, x_test_data: pd.DataFrame, y_train_
         logging.info(f'SUCCESS - model has been fitted')
 
         if output_dir:
-            save_model(fitted_model, output_dir)
-            logging.info(f'SUCCESS - Model has been saved to {output_dir}')
+            full_ouput_dir = os.path.join(CURRENT_DIR, output_dir)
+            save_model(fitted_model, full_ouput_dir)
+            logging.info(f'SUCCESS - Model has been saved to {full_ouput_dir}')
 
         predictions = fitted_model.predict_proba(x_test_data) if do_probabilities else fitted_model.predict(x_test_data)
         return fitted_model, predictions
@@ -122,7 +123,7 @@ def safe_creation_directory(path):
             os.makedirs(full_path)
             logging.info(f'SUCCESS - folder has been created at {full_path}')
         else:
-            logging.info(f'SUCCESS - EDA images are stored in {full_path}')
+            logging.info(f'SUCCESS - output is stored in {full_path}')
     except (OSError, SyntaxError) as err:
         logging.info(f'ERROR - during directory creation: {err}')
 
@@ -136,7 +137,8 @@ def save_model(model, output_dir: str):
     """
     try:
         safe_creation_directory(output_dir)
-        return joblib.dump(model, f'{output_dir}/{type(model).__name__}.pkl')
+        full_ouput_dir = os.path.join(CURRENT_DIR, output_dir)
+        return joblib.dump(model, f'{full_ouput_dir}/{type(model).__name__}.pkl')
     except Exception as err:
         logging.info(f'ERROR - during model dump: {err}')
 

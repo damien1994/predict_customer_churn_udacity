@@ -6,6 +6,7 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
+from churn.config import CURRENT_DIR
 from churn.utils import safe_creation_directory
 from churn.base_logger import logging
 
@@ -32,14 +33,15 @@ class DataExploration:
             for subdir in sub_dir:
                 path = os.path.join(output_dir, subdir)
                 safe_creation_directory(path)
+            full_output_dir = os.path.join(CURRENT_DIR, output_dir)
             for col in self.num_cols:
-                self.univariate_num_analysis(df, col, output_dir)
-                self.bivariate_num_analysis(df, col, self.target_col[0], 'poly', output_dir)
+                self.univariate_num_analysis(df, col, full_output_dir)
+                self.bivariate_num_analysis(df, col, self.target_col[0], 'poly', full_output_dir)
             for col in self.cat_cols:
-                self.univariate_cat_analysis(df, col, output_dir)
-                self.bivariate_cat_analysis(df, col, self.target_col[0], output_dir)
-            self.compute_correlation_matrix(df, output_dir)
-            self.plot_target_distribution(df, self.target_col[0], output_dir)
+                self.univariate_cat_analysis(df, col, full_output_dir)
+                self.bivariate_cat_analysis(df, col, self.target_col[0], full_output_dir)
+            self.compute_correlation_matrix(df, full_output_dir)
+            self.plot_target_distribution(df, self.target_col[0], full_output_dir)
             logging.info(f'SUCCESS - EDA has been done entirely !')
         except Exception as err:
             logging.info(f'ERROR - A step has failed during EDA : {err}')
