@@ -13,3 +13,7 @@ build: clean
 run: build
 	python3 -m churn.main \
 	--input_file $(INPUT_FILE)
+
+tests:
+	pytest -vv
+	coverage run --source=churn -m pytest

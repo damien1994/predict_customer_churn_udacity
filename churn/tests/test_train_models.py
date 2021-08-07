@@ -21,6 +21,7 @@ def data():
     return perform_feature_engineering(df, 'Churn', 0.3, 42)
 
 
+@pytest.mark.filterwarnings("ignore: lbfgs failed to converge")
 def test_train_models(data):
     try:
         (X_train, X_test, y_train, y_test), feature_names = data
