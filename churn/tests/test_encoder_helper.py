@@ -1,11 +1,12 @@
 """
 Test file for encoder helper class
 """
+
 import pytest
+import logging
 import pandas as pd
 
 from churn.config import ENCODING_TARGET
-from churn.base_logger import logging
 from churn.EncoderHelper import EncoderHelper
 
 
@@ -33,6 +34,11 @@ def output_data():
 
 
 def test_encoder_helper(input_data, output_data):
+    """
+    Test encoder helper function which :
+    1 - encode target column
+    2 - perform a mean target encoding
+    """
     try:
         cat_columns = ['Marital_Status', 'Gender']
         job_encoder = EncoderHelper(cat_columns, ENCODING_TARGET)

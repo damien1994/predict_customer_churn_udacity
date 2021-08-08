@@ -15,7 +15,7 @@ run: build
 	--input_file $(INPUT_FILE)
 
 tests:
-	pytest -vv
+	pytest -vv -s
 	coverage run --source=churn -m pytest
 
 linter:

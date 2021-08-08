@@ -23,6 +23,12 @@ def data():
 
 @pytest.mark.filterwarnings("ignore: lbfgs failed to converge")
 def test_train_models(data):
+    """
+    Test for train models function which:
+    1 - fit a simple model or a grid search
+    2 - [optional] save the model as a .pkl file
+    3 - compute predictions from model
+    """
     try:
         (X_train, X_test, y_train, y_test), feature_names = data
         lrc = LogisticRegression(max_iter=100)

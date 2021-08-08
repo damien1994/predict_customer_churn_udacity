@@ -21,6 +21,12 @@ def input_data():
 
 
 def test_perform_feature_engineering(input_data):
+    """
+    Test perform feature engineering function which :
+    1 - delete all non numeric columns for modelisation
+    2 - split data into train/test and X/y samples
+    3 - keep columns names for posterior model evaluation
+    """
     try:
         (X_train, X_test, y_train, y_test), feature_names = perform_feature_engineering(input_data, 'Churn', 0.3, 42)
         assert len(feature_names) == 2

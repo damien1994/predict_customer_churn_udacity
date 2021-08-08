@@ -1,0 +1,44 @@
+root - INFO - SUCCES - target has been perfectly encoded
+root - INFO - SUCCESS - Marital_Status has been encoded
+root - INFO - SUCCESS - Gender has been encoded
+root - INFO - TEST ERROR - columns encoded are not numeric : assert False
+ +  where False = <bound method Series.all of Churn                   False\nMarital_Status_Churn    False\nGender_Churn            False\ndtype: bool>()
+ +    where <bound method Series.all of Churn                   False\nMarital_Status_Churn    False\nGender_Churn            False\ndtype: bool> = Churn                   False\nMarital_Status_Churn    False\nGender_Churn            False\ndtype: bool.all
+ +      where Churn                   False\nMarital_Status_Churn    False\nGender_Churn            False\ndtype: bool = <bound method Series.isin of Churn                     int64\nMarital_Status_Churn    float64\nGender_Churn            float64\ndtype: object>(['int64', 'float64'])
+ +        where <bound method Series.isin of Churn                     int64\nMarital_Status_Churn    float64\nGender_Churn            float64\ndtype: object> = Churn                     int64\nMarital_Status_Churn    float64\nGender_Churn            float64\ndtype: object.isin
+ +          where Churn                     int64\nMarital_Status_Churn    float64\nGender_Churn            float64\ndtype: object =    Churn  Marital_Status_Churn  Gender_Churn\n0      0                  0.33          0.33\n1      0                  0....           0.33          0.33\n3      1                  1.00          0.50\n4      1                  0.33          0.33.dtypes
+ +            where    Churn  Marital_Status_Churn  Gender_Churn\n0      0                  0.33          0.33\n1      0                  0....           0.33          0.33\n3      1                  1.00          0.50\n4      1                  0.33          0.33 = <bound method NDFrame.filter of   Marital_Status Gender  Churn  Marital_Status_Churn  Gender_Churn\n0        Married   ...n      F      1                  1.00          0.50\n4        Married      M      1                  0.33          0.33>(regex='Churn')
+ +              where <bound method NDFrame.filter of   Marital_Status Gender  Churn  Marital_Status_Churn  Gender_Churn\n0        Married   ...n      F      1                  1.00          0.50\n4        Married      M      1                  0.33          0.33> =   Marital_Status Gender  Churn  Marital_Status_Churn  Gender_Churn\n0        Married      M      0                  0.3...wn      F      1                  1.00          0.50\n4        Married      M      1                  0.33          0.33.filter
+root - INFO - SUCCESS - model has been fitted : LogisticRegression(max_iter=200)
+root - INFO - SUCCESS - output is stored in /Users/damien/Documents/predict_customer_churn_udacity/churn/tests/output_test/results
+root - INFO - SUCCESS - Compute classification report
+root - INFO - SUCCESS - Compute roc curve
+root - INFO - SUCCESS - Compute Shapley values
+root - INFO - SUCCESS - output is stored in /Users/damien/Documents/predict_customer_churn_udacity/churn/tests/output_test/results
+root - INFO - SUCCESS - Compute feature importance
+root - INFO - TEST SUCCESS - during model evualuation : classification_report.csv has been stored
+root - INFO - TEST SUCCESS - during model evualuation : features_importances.png has been stored
+root - INFO - TEST SUCCESS - during model evualuation : roc_curve.png has been stored
+root - INFO - TEST SUCCESS - during model evualuation : shapley_values.png has been stored
+root - INFO - TEST SUCCESS - import_data function
+root - INFO - TEST SUCCESS - dataframe seems to have right dimensions
+root - INFO - SUCCESS - output is stored in /Users/damien/Documents/predict_customer_churn_udacity/churn/tests/output_test/images/eda/univariate_num_analysis
+root - INFO - SUCCESS - output is stored in /Users/damien/Documents/predict_customer_churn_udacity/churn/tests/output_test/images/eda/univarite_cat_analysis
+root - INFO - SUCCESS - output is stored in /Users/damien/Documents/predict_customer_churn_udacity/churn/tests/output_test/images/eda/bivariate_cat_analysis
+root - INFO - SUCCESS - output is stored in /Users/damien/Documents/predict_customer_churn_udacity/churn/tests/output_test/images/eda/bivariate_num_analysis
+root - INFO - SUCCESS - output is stored in /Users/damien/Documents/predict_customer_churn_udacity/churn/tests/output_test/images/eda/target
+root - INFO - SUCCESS - numerical univariate analysis on Age has been saved
+root - INFO - SUCCESS - numerical bivariate analysis on Age and Attrition_Flag has been saved
+root - INFO - SUCCESS - numerical univariate analysis on Credit_Limit has been saved
+root - INFO - SUCCESS - numerical bivariate analysis on Credit_Limit and Attrition_Flag has been saved
+root - INFO - SUCCESS - categorical univariate analysis on Marital_Status has been saved
+root - INFO - SUCCESS - categorical bivariate analysis on Marital_Status and Attrition_Flag has been saved
+root - INFO - SUCCESS - categorical univariate analysis on Gender has been saved
+root - INFO - SUCCESS - categorical bivariate analysis on Gender and Attrition_Flag has been saved
+root - INFO - SUCCESS - correlation matrix analysis has been saved
+root - INFO - SUCCESS - target distribution plot has been saved
+root - INFO - SUCCESS - EDA has been done entirely !
+root - INFO - TEST SUCCESS - during performing EDA : all files have been created and saved
+root - INFO - TEST SUCCESS - performing feature engineering
+root - INFO - SUCCESS - model has been fitted : LogisticRegression()
+root - INFO - TEST SUCCESS - model correctly fitted
