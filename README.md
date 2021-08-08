@@ -50,9 +50,10 @@ not developed yet
 These examples will inspire the way to create our unit test for data prepration
 - [Examples on github of pytest use for ML model testing](https://github.com/scikit-learn-contrib/imbalanced-learn/blob/master/imblearn/metrics/tests/test_score_objects.py).
 These examples will inspire the way to create our unit test for ML
+- [How to setup your pytest config](https://stackoverflow.com/questions/66490058/python-logging-does-not-log-when-used-inside-a-pytest-fixture)
+
 
 ## TO DO
-- unit tests with pytest
 - logging info vs logging error ? 
 - deal with option between retrain model or load pkl
 - docker : optional (personal ambition)
