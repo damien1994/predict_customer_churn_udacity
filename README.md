@@ -1,4 +1,5 @@
-# Predict Customer Churn
+Predict Customer Churn with Udacity
+======================
 
 - Project **Predict Customer Churn** of ML DevOps Engineer Nanodegree Udacity
 
@@ -6,12 +7,30 @@
 Your project description here.
 
 
-## Running Files
+## Running Files 
 How do you run your files? What should happen when you run your files?
 
+### Local Developement 
+Python >= 3.8
+
+```bash
+virtualenv -p python3.8 venv
+source venv/bin/activate
+pip3 install -r requirements.txt
+
+make run
+or 
+churn --input_fle <your csv file>
+```
+
+### Docker (feature on creation)
+not developed yet
+
 ## REFERENCES
-- https://github.com/eugeneyan/testing-ml/blob/master/tests/data_prep/test_categorical.py
-- https://github.com/scikit-learn-contrib/imbalanced-learn/blob/master/imblearn/metrics/tests/test_score_objects.py
+- [Examples on github of pytest use for data preparation](https://github.com/eugeneyan/testing-ml/blob/master/tests/data_prep/test_categorical.py).
+These examples will inspire the way to create our unit test for data prepration
+- [Examples on github of pytest use for ML model testing](https://github.com/scikit-learn-contrib/imbalanced-learn/blob/master/imblearn/metrics/tests/test_score_objects.py).
+These examples will inspire the way to create our unit test for ML
 
 ## TO DO
 - refacto utils into python classes : done
