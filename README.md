@@ -33,6 +33,9 @@ make tests
 
 # Local pylint
 make linter
+
+# If you want to make all these once (in local):
+make all
 ```
 
 All logs are contained in .log files:
