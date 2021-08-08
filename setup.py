@@ -7,7 +7,7 @@ setup(
     version='1.0',
     packages=['churn'],
     include_package_data=True,
-    python_requires='~=3.6',
+    python_requires='~=3.8',
     description='Predict customer churn',
     license='LICENSE',
     entry_points={
