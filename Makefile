@@ -17,3 +17,6 @@ run: build
 tests:
 	pytest -vv
 	coverage run --source=churn -m pytest
+
+linter:
+	pylint churn --ignore-patterns=test --fail-under=7
