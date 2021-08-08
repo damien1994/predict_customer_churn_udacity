@@ -1,2 +1,11 @@
+# venv
 venv/
 
+# Python
+.ipynb_checkpoints
+*/.ipynb_checkpoints/
+**/__pycache__/
+.coverage
+build/
+dist/
+*.egg-info/
