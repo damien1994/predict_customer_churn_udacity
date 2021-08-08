@@ -50,15 +50,20 @@ class EvaluateModel:
                 coefficients = model_fitted.coef_[0]
             safe_creation_directory(output_dir)
             full_output_dir = os.path.join(CURRENT_DIR, output_dir)
-            self.store_classification_report(true_labels, predictions, model_name, full_output_dir)
+            self.store_classification_report(true_labels, predictions,
+                                             model_name, full_output_dir)
             logging.info("SUCCESS - Compute classification report")
-            self.store_model_roc_curve(model_fitted, test_data, true_labels, model_name, full_output_dir)
+            self.store_model_roc_curve(model_fitted, test_data,
+                                       true_labels, model_name, full_output_dir)
             logging.info("SUCCESS - Compute roc curve")
-            self.compute_shapley_values(model_fitted, test_data, full_output_dir, model_name, train_data)
+            self.compute_shapley_values(model_fitted, test_data,
+                                        full_output_dir, model_name, train_data)
             logging.info("SUCCESS - Compute Shapley values")
-            self.compute_features_importances(train_data.columns, coefficients, model_name, full_output_dir)
+            self.compute_features_importances(train_data.columns, coefficients,
+                                              model_name, full_output_dir)
             logging.info("SUCCESS - Compute feature importance")
-        except (AssertionError, AttributeError, IsADirectoryError, NotADirectoryError, SyntaxError, ValueError) as err:
+        except (AssertionError, AttributeError, IsADirectoryError,
+                NotADirectoryError, SyntaxError, ValueError) as err:
             logging.info(f'ERROR - during model evaluation : {err}')
 
     @staticmethod
@@ -120,12 +125,15 @@ class EvaluateModel:
             elif model_name in ['RandomForestClassifier']:
                 explainer = shap.TreeExplainer(model_fitted)
             else:
-                logging.info('Add your model type to tree, linear, gradient or deep explainer '
+                logging.info('Add your model type to tree, linear, '
+                             'gradient or deep explainer '
                              'and add condition to this function')
             shap_values = explainer.shap_values(test_data)
             shap.summary_plot(shap_values, test_data, show=False)
-            plt.savefig(f'{output_dir}/{type(model_fitted).__name__}_shapley_values.png', bbox_inches='tight')
-        except (AssertionError, AttributeError, ValueError, TypeError, FileNotFoundError) as err:
+            plt.savefig(f'{output_dir}/{type(model_fitted).__name__}'
+                        f'_shapley_values.png', bbox_inches='tight')
+        except (AssertionError, AttributeError, ValueError,
+                TypeError, FileNotFoundError) as err:
             logging.info(f'ERROR - during shapley values compute: {err}')
 
     @staticmethod

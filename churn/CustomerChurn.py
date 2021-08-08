@@ -38,30 +38,33 @@ class CustomerChurn(DataExploration, EncoderHelper, EvaluateModel):
         """
         try:
             df = import_data(self.path_data, self.num_cols, self.cat_cols, self.target_col)
-            logging.info(f'SUCCESS - Global data importation has been performed')
+            logging.info('SUCCESS - Global data importation has been performed')
 
             self.perform_eda(df, IMAGES_EDA_OUTPUT_DIR, IMAGES_EDA_SUB_DIR)
-            logging.info(f'SUCCESS - Global EDA step has been performed')
+            logging.info('SUCCESS - Global EDA step has been performed')
 
             df = self.encoder_helper(df, 'Attrition_Flag', 'Churn')
-            logging.info(f'SUCCESS - Global encoder helper step has been performed')
+            logging.info('SUCCESS - Global encoder helper step has been performed')
 
-            (X_train, X_test, y_train, y_test), feature_names = perform_feature_engineering(df, 'Churn', 0.3, 42)
-            logging.info(f'SUCCESS - Global feature engineering step has been performed')
+            (x_train, x_test, y_train, y_test), feature_names = \
+                perform_feature_engineering(df, 'Churn', 0.3, 42)
+            logging.info('SUCCESS - Global feature engineering step has been performed')
 
             lrc = LogisticRegression(max_iter=200)
             rfc = RandomForestClassifier(random_state=42)
             for model in [lrc, rfc]:
                 if model == lrc:
-                    fitted_model, predictions = train_models(X_train, X_test, y_train, model,
-                                                             output_dir=MODEL_OUTPUT_DIR)
+                    fitted_model, predictions = \
+                        train_models(x_train, x_test, y_train, model,
+                                     output_dir=MODEL_OUTPUT_DIR)
                 elif model == rfc:
-                    fitted_model, predictions = train_models(X_train, X_test, y_train, model, param_grid=PARAM_GRID,
-                                                             cv=5, grid_search=True, do_probabilities=False,
-                                                             output_dir=MODEL_OUTPUT_DIR)
-                logging.info(f'SUCCESS - Global model training step has been performed')
+                    fitted_model, predictions = \
+                        train_models(x_train, x_test, y_train, model, param_grid=PARAM_GRID,
+                                     cv=5, grid_search=True, do_probabilities=False,
+                                     output_dir=MODEL_OUTPUT_DIR)
+                logging.info('SUCCESS - Global model training step has been performed')
 
-                self.evaluate_model(fitted_model, X_train, X_test, y_test, predictions, RESULTS_OUTPUT_DIR)
-                logging.info(f'SUCCESS - Global model evaluation step has been performed')
+                self.evaluate_model(fitted_model, x_train, x_test, y_test, predictions, RESULTS_OUTPUT_DIR)
+                logging.info('SUCCESS - Global model evaluation step has been performed')
         except Exception as err:
             logging.info(f'ERROR - Customer churn prediction has not been performed: {err}')

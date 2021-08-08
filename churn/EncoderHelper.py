@@ -30,8 +30,11 @@ class EncoderHelper:
         :return: a pandas dataframe with the target and categorical column encoded
         """
         try:
-            dataframe = self.encode_target(df, target_name, new_target_name, self.target_encoding_dict)
-            logging.info(f'SUCCES - target has been perfectly encoded')
+            dataframe = self.encode_target(df,
+                                           target_name,
+                                           new_target_name,
+                                           self.target_encoding_dict)
+            logging.info('SUCCES - target has been perfectly encoded')
             for col in self.cat_cols:
                 self.encoder_cat_features(dataframe, col)
             return dataframe
@@ -69,7 +72,8 @@ class EncoderHelper:
             logging.info(f'SUCCESS - {feature} has been encoded')
             return df
         except (KeyError, AttributeError) as err:
-            logging.info(f'ERROR - during categorical columns encoding : {err}')
+            logging.info(f'ERROR - '
+                         f'during categorical columns encoding : {err}')
 
     @staticmethod
     def compute_encoding_target_dict(df: pd.DataFrame, target_name: str, target_encoding_dict: dict) -> dict:

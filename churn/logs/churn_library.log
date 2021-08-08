@@ -61,7 +61,7 @@ root - INFO - SUCCESS - Global model training step has been performed
 root - INFO - SUCCESS - output is stored in /Users/damien/Documents/predict_customer_churn_udacity/churn/results
 root - INFO - SUCCESS - Compute classification report
 root - INFO - SUCCESS - Compute roc curve
-root - INFO - SUCESS - Compute Shapley values
+root - INFO - SUCCESS - Compute Shapley values
 root - INFO - SUCCESS - output is stored in /Users/damien/Documents/predict_customer_churn_udacity/churn/results
 root - INFO - SUCCESS - Compute feature importance
 root - INFO - SUCCESS - Global model evaluation step has been performed
@@ -77,7 +77,7 @@ root - INFO - SUCCESS - Global model training step has been performed
 root - INFO - SUCCESS - output is stored in /Users/damien/Documents/predict_customer_churn_udacity/churn/results
 root - INFO - SUCCESS - Compute classification report
 root - INFO - SUCCESS - Compute roc curve
-root - INFO - SUCESS - Compute Shapley values
+root - INFO - SUCCESS - Compute Shapley values
 root - INFO - SUCCESS - output is stored in /Users/damien/Documents/predict_customer_churn_udacity/churn/results
 root - INFO - SUCCESS - Compute feature importance
 root - INFO - SUCCESS - Global model evaluation step has been performed

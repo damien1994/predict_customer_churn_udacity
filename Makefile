@@ -20,3 +20,5 @@ tests:
 
 linter:
 	pylint churn --ignore-patterns=test --fail-under=7
+
+all: clean build run tests linter
