@@ -1,6 +1,8 @@
 """
 Python class for customer churn prediction
 Centralize all steps for churn prediction
+author: Damien Michelle
+date: 09/08/2021
 """
 
 from sklearn.linear_model import LogisticRegression

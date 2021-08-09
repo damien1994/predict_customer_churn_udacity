@@ -1,5 +1,7 @@
 """
 Python class for encoding categorical columns
+author: Damien Michelle
+date: 09/08/2021
 """
 import pandas as pd
 import numpy as np

@@ -1,14 +1,13 @@
 """
 Test file for data import
+author: Damien Michelle
+date: 09/08/2021
 """
 import os
 import logging
-import pytest
-import pandas as pd
 
 from churn.config import CURRENT_DIR, NUM_COLUMNS, CAT_COLUMNS, TARGET_COL
 from churn.utils import import_data
-#from churn.tests.base_logger import logging
 
 
 def test_import():

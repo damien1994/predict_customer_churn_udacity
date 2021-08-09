@@ -1,5 +1,7 @@
 """
 Test file for train model
+author: Damien Michelle
+date: 09/08/2021
 """
 import os
 import pytest

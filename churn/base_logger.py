@@ -1,5 +1,7 @@
 """
 Python script to define logger config
+author: Damien Michelle
+date: 09/08/2021
 """
 import os
 import logging

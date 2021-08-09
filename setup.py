@@ -1,3 +1,8 @@
+"""
+Setup file
+Author : Damien Michelle
+date : 09/08/2021
+"""
 from setuptools import setup
 
 setup(

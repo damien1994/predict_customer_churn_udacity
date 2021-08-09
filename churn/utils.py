@@ -1,5 +1,7 @@
 """
 File to store all functions for customer churn predictions
+author: Damien Michelle
+date: 09/08/2021
 """
 import os
 import argparse

@@ -1,5 +1,7 @@
 """
 Test file for model evaluation
+author: Damien Michelle
+date: 09/08/2021
 """
 
 import os
